@@ -115,21 +115,25 @@ public class NoteActivity extends Activity {
             Toast.makeText(this, "Enter tag name", Toast.LENGTH_LONG).show();
             return;
         }
-        Tag tag = new Tag(editText.getText().toString());
-        if (!tagAdapter.contains(tag)) {
-            Log.d(TAG, "Trying to add tag");
-            Log.d(TAG, Boolean.toString(repository.contains(new Tag("q"))));
-            if (repository.contains(tag)) {
-                tag = repository.getTag(tag.getName());
-            }
-
-            long id = repository.insert(tag);
-            tag.setId((int)id);
-            tagAdapter.addTag(tag);
-            editText.setText("");
-        }
         else
-            Toast.makeText(this, "Tag with name " + tag.getName() + " have been already added.", Toast.LENGTH_LONG).show();
+        {
+
+            Tag tag = new Tag(editText.getText().toString());
+            if (!tagAdapter.contains(tag)) {
+                Log.d(TAG, "Trying to add tag");
+                Log.d(TAG, Boolean.toString(repository.contains(new Tag("q"))));
+                if (repository.contains(tag)) {
+                    tag = repository.getTag(tag.getName());
+                }
+
+                long id = repository.insert(tag);
+                tag.setId((int)id);
+                tagAdapter.addTag(tag);
+                editText.setText("");
+            }
+            else
+                Toast.makeText(this, "Tag with name " + tag.getName() + " have been already added.", Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -147,7 +151,11 @@ public class NoteActivity extends Activity {
         }
         else
         {
-            note.setTitle(title.getText().toString());
+            if (title.getText().toString().equals(""))
+                note.setTitle(date.getText().toString());
+            else
+                note.setTitle(title.getText().toString());
+
             note.setBody(body.getText().toString());
             note.setDate(date.getText().toString());
             repository.updateNote(note);

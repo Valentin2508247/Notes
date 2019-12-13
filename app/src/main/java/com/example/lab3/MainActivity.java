@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd 'at' hh.mm", Locale.getDefault());
         String currentDate = sdf.format(new Date());
-        repository.insert(new Note("лаба3","Аня помоги",  currentDate, null));
+        //repository.insert(new Note("лаба3","Аня помоги",  currentDate, null));
         ArrayList<Note> array = repository.getNotes();
         myArrayAdapter = new MyArrayAdapter(this, array);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)

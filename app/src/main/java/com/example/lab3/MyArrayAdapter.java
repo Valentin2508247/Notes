@@ -27,7 +27,6 @@ public class MyArrayAdapter extends ArrayAdapter {
     {
 
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-
         View view = inflater.inflate(R.layout.note_layout, parent, false);
 
         TextView title = view.findViewById(R.id.note_title);

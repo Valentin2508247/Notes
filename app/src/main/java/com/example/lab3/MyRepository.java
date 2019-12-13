@@ -215,8 +215,8 @@ public class MyRepository {
     {
         ArrayList<Note> list = new ArrayList<>();
 
-
-        String query = String.format("SELECT * FROM %s JOIN %s ON (%s.%s = %s.%s) JOIN %s ON ((%s.%s = %s.%s) AND (%s.%s = '%s')) ;", DatabaseHelper.TABLE_NOTE, DatabaseHelper.TABLE_LINK, DatabaseHelper.TABLE_NOTE, DatabaseHelper.COLUMN_ID_NOTE, DatabaseHelper.TABLE_LINK, DatabaseHelper.COLUMN_IDNOTE_LINK, DatabaseHelper.TABLE_TAG, DatabaseHelper.TABLE_LINK, DatabaseHelper.COLUMN_IDTAG_LINK, DatabaseHelper.TABLE_TAG, DatabaseHelper.COLUMN_ID_TAG, DatabaseHelper.TABLE_TAG, DatabaseHelper.COLUMN_NAME_TAG, tag.getName());
+        String query = String.format("SELECT note._id, note.title, note.body, note.date FROM %s JOIN %s ON (%s.%s = %s.%s) JOIN %s ON ((%s.%s = %s.%s) AND (%s.%s = '%s')) ;", DatabaseHelper.TABLE_NOTE, DatabaseHelper.TABLE_LINK, DatabaseHelper.TABLE_NOTE, DatabaseHelper.COLUMN_ID_NOTE, DatabaseHelper.TABLE_LINK, DatabaseHelper.COLUMN_IDNOTE_LINK, DatabaseHelper.TABLE_TAG, DatabaseHelper.TABLE_LINK, DatabaseHelper.COLUMN_IDTAG_LINK, DatabaseHelper.TABLE_TAG, DatabaseHelper.COLUMN_ID_TAG, DatabaseHelper.TABLE_TAG, DatabaseHelper.COLUMN_NAME_TAG, tag.getName());
+        //String query = String.format("SELECT * FROM %s JOIN %s ON (%s.%s = %s.%s) JOIN %s ON ((%s.%s = %s.%s) AND (%s.%s = '%s')) ;", DatabaseHelper.TABLE_NOTE, DatabaseHelper.TABLE_LINK, DatabaseHelper.TABLE_NOTE, DatabaseHelper.COLUMN_ID_NOTE, DatabaseHelper.TABLE_LINK, DatabaseHelper.COLUMN_IDNOTE_LINK, DatabaseHelper.TABLE_TAG, DatabaseHelper.TABLE_LINK, DatabaseHelper.COLUMN_IDTAG_LINK, DatabaseHelper.TABLE_TAG, DatabaseHelper.COLUMN_ID_TAG, DatabaseHelper.TABLE_TAG, DatabaseHelper.COLUMN_NAME_TAG, tag.getName());
         Log.d(TAG, query);
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst())
